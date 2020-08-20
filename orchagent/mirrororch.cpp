@@ -60,7 +60,7 @@ MirrorEntry::MirrorEntry(const string& platform) :
     }
 
     nexthopInfo.prefix = IpPrefix("0.0.0.0/0");
-    nexthopInfo.nexthop = NextHopKey("0.0.0.0", "");
+    nexthopInfo.nexthop = NextHopKey("0.0.0.0", std::string(""));
 }
 
 MirrorOrch::MirrorOrch(TableConnector stateDbConnector, TableConnector confDbConnector,
@@ -946,7 +946,7 @@ void MirrorOrch::updateNextHop(const NextHopUpdate& update)
         }
         else
         {
-            session.nexthopInfo.nexthop = NextHopKey("0.0.0.0", "");
+            session.nexthopInfo.nexthop = NextHopKey("0.0.0.0", std::string(""));
         }
 
         // Update State DB Nexthop
